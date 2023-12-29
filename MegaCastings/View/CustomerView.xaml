@@ -1,0 +1,29 @@
+﻿<Page x:Class="MegaCastings.View.CustomerView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MegaCastings.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Gestion des clients">
+
+    <Grid Background="#F2F5EC" ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="150px"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="4" Content="Ajouter" Background="#BAFFB9" BorderBrush="#62FF5F" BorderThickness="1" Padding="24,12" Margin="0,20,40,0" Click="Button_AddCustomer"/>
+        <Button Grid.Row="0" Grid.Column="3" Content="Supprimer" Background="#FFC9C9" BorderBrush="#FF7676" BorderThickness="1" Padding="24,12" Margin="0,20,20,0" x:Name="del" Click="Button_RemoveCustomer"/>
+        <Button Grid.Row="0" Grid.Column="2" Content="Éditer" Background="#FFE5A4" BorderBrush="#FFCC48" BorderThickness="1" Padding="24,12" Margin="0,20,20,0" Click="Button_EditCustomer"/>
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="40,20,40,0" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding alluser}" SelectedItem="{Binding SelectedUser}" />
+        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" x:Name="Main" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

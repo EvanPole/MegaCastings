@@ -1,0 +1,40 @@
+﻿<Window x:Class="MegaCastings.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MegaCastings"
+        mc:Ignorable="d"
+        Title="MegaCastings"
+        Height="450" 
+        Width="800"
+        Background="#F2F5EC">
+
+    <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border Grid.RowSpan="2" BorderBrush="#BDBDBD" BorderThickness="0,0,1,0" Background="White">
+            <StackPanel>
+                <Border BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White">
+                    <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="32" Padding="0,16,0,16">
+                        <Run Text="Mega"/>
+                        <LineBreak/>
+                        <Run Text="Castings" Foreground="#76923C"/>
+                    </TextBlock>
+                </Border>
+                <Button Content="Clients" Padding="0,12" BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White" Click="Button_CustomerClick" FontSize="16"/>
+                <Button Content="Partenaires de diffusion" Padding="0,12" BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White"  Click="Button_PartnerClick" FontSize="16"/>
+                <Button Content="Offres" Padding="0,12" BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White"  Click="Button_OffersClick" FontSize="16"/>
+            </StackPanel>
+        </Border>
+        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" x:Name="Main" NavigationUIVisibility="Hidden"/>
+    </Grid>
+
+</Window>
