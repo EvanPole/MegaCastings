@@ -6,11 +6,24 @@
       xmlns:local="clr-namespace:MegaCastings.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="OffersView">
+      Title="Gestion des partenaires de diffusion">
 
+
+    
     <Grid>
-        <TextBlock>
-           <Run Text="Offres"/>
-        </TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="150px"/>
+            <ColumnDefinition Width="150px"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="3" Content="Supprimer" Background="#FFC9C9" BorderBrush="#FF7676" BorderThickness="1" Padding="24,12" Margin="0,20,20,0" x:Name="del" Click="Button_RemovePartner" />
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="40,20,40,0" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding allOffer}" SelectedItem="{Binding SelectedOffer}" x:Name="offersdatagrid" />
+        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" x:Name="Main" NavigationUIVisibility="Hidden" />
     </Grid>
 </Page>

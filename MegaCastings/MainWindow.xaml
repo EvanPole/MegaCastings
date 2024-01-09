@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:MegaCastings"
         mc:Ignorable="d"
         Title="MegaCastings"
-        Height="450" 
-        Width="800"
-        Background="#F2F5EC">
+        Height="700" 
+        Width="1200"
+        Background="#20263c">
 
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
@@ -20,18 +20,16 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Border Grid.RowSpan="2" BorderBrush="#BDBDBD" BorderThickness="0,0,1,0" Background="White">
+        <Border Grid.RowSpan="2" BorderBrush="#161b2e" BorderThickness="0,0,1,0" Background="#161b2e">
             <StackPanel>
-                <Border BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White">
-                    <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="32" Padding="0,16,0,16">
-                        <Run Text="Mega"/>
-                        <LineBreak/>
-                        <Run Text="Castings" Foreground="#76923C"/>
+                <Border BorderBrush="black" BorderThickness="0,0,0,1" Background="#161b2e">
+                    <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="20" Padding="0,16,0,16">
+                        <Run Text="Mega Castings" Foreground="#4792dd"/>
                     </TextBlock>
                 </Border>
-                <Button Content="Clients" Padding="0,12" BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White" Click="Button_CustomerClick" FontSize="16"/>
-                <Button Content="Partenaires de diffusion" Padding="0,12" BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White"  Click="Button_PartnerClick" FontSize="16"/>
-                <Button Content="Offres" Padding="0,12" BorderBrush="#BDBDBD" BorderThickness="0,0,0,1" Background="White"  Click="Button_OffersClick" FontSize="16"/>
+                <Button Content="Clients" Padding="0,12" FontWeight="Bold" Foreground="#848791" BorderBrush="black" BorderThickness="0,0,0,1" Background="#20263c" Click="Button_CustomerClick" FontSize="16"/>
+                <Button Content="Partenaires de diffusion"  FontWeight="Bold" Foreground="#848791" Padding="0,12" BorderBrush="black" BorderThickness="0,0,0,1" Background="#20263c"  Click="Button_PartnerClick" FontSize="16"/>
+                <Button Content="Offres" Padding="0,12"  FontWeight="Bold" Foreground="#848791" BorderBrush="black" BorderThickness="0,0,0,1" Background="#20263c"  Click="Button_OffersClick" FontSize="16"/>
             </StackPanel>
         </Border>
         <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" x:Name="Main" NavigationUIVisibility="Hidden"/>

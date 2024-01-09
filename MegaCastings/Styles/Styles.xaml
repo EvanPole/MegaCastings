@@ -16,10 +16,24 @@
         <Setter Property="Padding" Value="5,10,5,10" />
         <Setter Property="Background" Value="White" />
     </Style>
-
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="#121425" />
         <Setter Property="Foreground" Value="#222528" />
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalGridLinesBrush" Value="#121425" />
+        <Setter Property="VerticalGridLinesBrush" Value="#121425" />
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+
+        <Setter Property="ColumnHeaderStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#003366"/>
+                    <Setter Property="Foreground" Value="#FFFFFF"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
     </Style>
+
 </ResourceDictionary>

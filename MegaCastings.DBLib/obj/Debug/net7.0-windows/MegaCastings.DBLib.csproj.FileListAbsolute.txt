@@ -55,3 +55,17 @@ C:\Users\Max\source\repos\MegaCastings-App\MegaCastings.DBLib\obj\Debug\net7.0-w
 C:\Users\Max\source\repos\MegaCastings-App\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.pdb
 C:\Users\Max\source\repos\MegaCastings-App\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.genruntimeconfig.cache
 C:\Users\Max\source\repos\MegaCastings-App\MegaCastings.DBLib\obj\Debug\net7.0-windows\ref\MegaCastings.DBLib.dll
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\bin\Debug\net7.0-windows\MegaCastings.DBLib.deps.json
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\bin\Debug\net7.0-windows\MegaCastings.DBLib.runtimeconfig.json
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\bin\Debug\net7.0-windows\MegaCastings.DBLib.dll
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\bin\Debug\net7.0-windows\MegaCastings.DBLib.pdb
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.csproj.AssemblyReference.cache
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.AssemblyInfoInputs.cache
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.AssemblyInfo.cs
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.csproj.CoreCompileInputs.cache
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.dll
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\refint\MegaCastings.DBLib.dll
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.pdb
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\MegaCastings.DBLib.genruntimeconfig.cache
+C:\Users\suire\Desktop\MegaCastings-App-main\MegaCastings.DBLib\obj\Debug\net7.0-windows\ref\MegaCastings.DBLib.dll

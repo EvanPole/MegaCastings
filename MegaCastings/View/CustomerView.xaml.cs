@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MegaCastings.DBLib.Class;
+using System.Collections.Generic;
 
 namespace MegaCastings.View
 {
@@ -35,7 +36,34 @@ namespace MegaCastings.View
             {
                 alluser = new ObservableCollection<User>(allusers.Users.ToList());
             }
+
+            var columnsToDisplay = new Dictionary<string, string>
+            {
+                { "Id", "ID" },
+                { "Lastname", "Nom" },
+                { "Firstname", "Prénom" },
+                { "Email", "E-mail" },
+                { "Birthdate", "Date de naissance" },
+                { "Bigcategoryid", "Catégorie" },
+                { "Subcategoryid", "Sous-catégorie" },
+                //{ "Annonceid", "Annonce ID" },
+                { "Isactive", "Actif" }
+            };
+
+            foreach (var column in columnsToDisplay)
+            {
+                DataGridTextColumn dataColumn = new DataGridTextColumn();
+                dataColumn.Header = column.Value;
+                dataColumn.Binding = new Binding(column.Key);
+                customersdatagrid.Columns.Add(dataColumn);
+            }
+
+            // Supprimez les colonnes du XAML
+            customersdatagrid.AutoGenerateColumns = false;
         }
+
+
+
         private void Button_EditCustomer(object sender, RoutedEventArgs e)
         {
             Main.Content = new EditCustomerView(SelectedUser);

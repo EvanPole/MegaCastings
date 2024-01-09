@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Gestion des clients">
 
-    <Grid Background="#F2F5EC" ShowGridLines="False">
+    <Grid Background="#20263c" ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*" />
@@ -23,7 +23,8 @@
         <Button Grid.Row="0" Grid.Column="4" Content="Ajouter" Background="#BAFFB9" BorderBrush="#62FF5F" BorderThickness="1" Padding="24,12" Margin="0,20,40,0" Click="Button_AddCustomer"/>
         <Button Grid.Row="0" Grid.Column="3" Content="Supprimer" Background="#FFC9C9" BorderBrush="#FF7676" BorderThickness="1" Padding="24,12" Margin="0,20,20,0" x:Name="del" Click="Button_RemoveCustomer"/>
         <Button Grid.Row="0" Grid.Column="2" Content="Éditer" Background="#FFE5A4" BorderBrush="#FFCC48" BorderThickness="1" Padding="24,12" Margin="0,20,20,0" Click="Button_EditCustomer"/>
-        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="40,20,40,0" Style="{StaticResource DataGridStyle}" ItemsSource="{Binding alluser}" SelectedItem="{Binding SelectedUser}" />
+        <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="40,20,40,0" Style="{StaticResource DataGridStyle}"
+          ItemsSource="{Binding alluser}" SelectedItem="{Binding SelectedUser}" x:Name="customersdatagrid" CanUserReorderColumns="False" CanUserResizeColumns="False"/>
         <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5" x:Name="Main" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

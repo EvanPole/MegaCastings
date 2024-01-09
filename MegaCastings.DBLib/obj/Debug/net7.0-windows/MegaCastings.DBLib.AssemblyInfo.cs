@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MegaCastings.DBLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+578d11d62f54f04c56e1b73572244a99df39a12f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MegaCastings.DBLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MegaCastings.DBLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
