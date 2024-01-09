@@ -1,24 +1,15 @@
 ﻿using MegaCastings.DBLib.Class;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MegaCastings.View
 {
     /// <summary>
-    /// Interaction logic for EditCustomerView.xaml
+    /// Représente la logique de l'interface utilisateur pour l'édition d'un client.
     /// </summary>
     public partial class EditCustomerView : Page
     {
@@ -32,15 +23,20 @@ namespace MegaCastings.View
             set { _User = value; }
         }
 
+        /// <summary>
+        /// Obtient les catégories principales depuis la base de données.
+        /// </summary>
         private ObservableCollection<BigCategory> GetBigCategories()
         {
-            // Obtenez les catégories depuis la base de données
             using (MegaProductionContext context = new MegaProductionContext())
             {
                 return new ObservableCollection<BigCategory>(context.BigCategories.ToList());
             }
         }
 
+        /// <summary>
+        /// Événement déclenché lors du changement de sélection de la catégorie principale.
+        /// </summary>
         private void DropdownBigCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DropdownBigCategories.SelectedItem is BigCategory selectedBigCategory)
@@ -50,8 +46,9 @@ namespace MegaCastings.View
             }
         }
 
-
-
+        /// <summary>
+        /// Obtient les sous-catégories pour la catégorie principale sélectionnée.
+        /// </summary>
         private void GetSubCategoriesForSelectedBigCategory(BigCategory selectedBigCategory)
         {
             using (MegaProductionContext context = new MegaProductionContext())
@@ -66,13 +63,18 @@ namespace MegaCastings.View
             }
         }
 
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="EditCustomerView"/>.
+        /// </summary>
         public EditCustomerView(User user)
         {
             this.User = user;
+
+            // Vérifie si l'utilisateur est null (nouvelle édition) et redirige vers la vue des clients
             if (user == null)
             {
                 CustomerView CustomerView = new CustomerView();
-                NavigationService?.RemoveBackEntry(); 
+                NavigationService?.RemoveBackEntry();
                 NavigationService?.Navigate(CustomerView);
             }
             else
@@ -86,6 +88,8 @@ namespace MegaCastings.View
 
                 this.DropdownBigCategories.ItemsSource = GetBigCategories();
                 DropdownBigCategories.SelectionChanged += DropdownBigCategories_SelectionChanged;
+
+                // Vérifie la sélection de la catégorie principale et met à jour les sous-catégories
                 if (DropdownBigCategories.SelectedItem is BigCategory selectedBigCategory)
                 {
                     GetSubCategoriesForSelectedBigCategory(selectedBigCategory);
@@ -96,7 +100,9 @@ namespace MegaCastings.View
             }
         }
 
-
+        /// <summary>
+        /// Événement déclenché lors du clic sur le bouton de sauvegarde des modifications de l'utilisateur.
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string firstName = prenom.Text;
@@ -105,36 +111,38 @@ namespace MegaCastings.View
             DateTime? selectedDate = birthdate.SelectedDate;
             int CheckBoxIsActive = checkboxisactive.IsChecked == true ? 1 : 0;
 
+            // Vérifie si les champs obligatoires sont remplis
             if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(eMail) && selectedDate.HasValue)
             {
-
+                // Vérifie la sélection de la catégorie principale et de la sous-catégorie
                 if (DropdownBigCategories.SelectedItem is BigCategory selectedBigCategory && DropdownSubCategory.SelectedItem is SubCategory selectedSubCategory)
                 {
+                    // Met à jour les propriétés de l'utilisateur avec les nouvelles données
                     User.Lastname = lastName;
-                    User.Firstname = firstName; 
+                    User.Firstname = firstName;
                     User.Email = eMail;
                     User.Birthdate = selectedDate.Value;
                     User.Bigcategoryid = selectedBigCategory.Id;
                     User.Subcategoryid = selectedSubCategory.Id;
                     User.Isactive = CheckBoxIsActive;
 
+                    // Met à jour l'utilisateur dans la base de données
                     using (MegaProductionContext context = new MegaProductionContext())
                     {
                         context.Users.Update(User);
                         context.SaveChanges();
                     }
 
-                    MessageBox.Show("Utilisateur update avec succès.");
+                    MessageBox.Show("Utilisateur mis à jour avec succès.");
 
+                    // Redirige vers la vue des clients
                     CustomerView CustomerView = new CustomerView();
                     NavigationService?.RemoveBackEntry(); // Efface l'historique de navigation
                     NavigationService?.Navigate(CustomerView);
-
- 
                 }
                 else
                 {
-                    MessageBox.Show("Veuillez sélectionner une catégorie et une sous-catégorie.");
+                    MessageBox.Show("Veuillez sélectionner une catégorie principale et une sous-catégorie.");
                 }
             }
             else

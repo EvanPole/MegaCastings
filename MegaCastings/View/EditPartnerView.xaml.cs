@@ -1,25 +1,17 @@
 ﻿using MegaCastings.DBLib.Class;
 using Org.BouncyCastle.Bcpg;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MegaCastings.View
 {
     /// <summary>
-    /// Logique d'interaction pour EditPartnerView.xaml
+    /// Représente la logique de l'interface utilisateur pour l'édition d'un partenaire.
     /// </summary>
     public partial class EditPartnerView : Page
     {
@@ -32,12 +24,17 @@ namespace MegaCastings.View
             set { _Partner = value; }
         }
 
+        /// <summary>
+        /// Initialise une nouvelle instance de la classe <see cref="EditPartnerView"/>.
+        /// </summary>
         public EditPartnerView(Partner partner)
         {
             InitializeComponent();
 
-
+            // Initialise le partenaire à éditer
             this.Partner = partner;
+
+            // Vérifie si le partenaire est null (nouvelle édition) et redirige vers la vue des partenaires
             if (partner == null)
             {
                 PartnerView PartnerView = new PartnerView();
@@ -46,7 +43,7 @@ namespace MegaCastings.View
             }
             else
             {
-                InitializeComponent();
+                // Remplit les champs de l'interface utilisateur avec les données du partenaire existant
                 DataContext = this;
                 this.label.Text = partner.Label;
                 this.siret.Text = partner.Siret;
@@ -58,14 +55,20 @@ namespace MegaCastings.View
             }
         }
 
+        /// <summary>
+        /// Obtient les catégories principales depuis la base de données.
+        /// </summary>
         private ObservableCollection<BigCategory> GetBigCategories()
         {
-            // Obtenez les catégories depuis la base de données
             using (MegaProductionContext context = new MegaProductionContext())
             {
                 return new ObservableCollection<BigCategory>(context.BigCategories.ToList());
             }
         }
+
+        /// <summary>
+        /// Obtient les catégories de packs depuis la base de données.
+        /// </summary>
         private ObservableCollection<Pack> GetPackCategories()
         {
             using (MegaProductionContext context = new MegaProductionContext())
@@ -74,6 +77,9 @@ namespace MegaCastings.View
             }
         }
 
+        /// <summary>
+        /// Événement déclenché lors du clic sur le bouton de sauvegarde des modifications du partenaire.
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string Label = label.Text;
@@ -82,11 +88,13 @@ namespace MegaCastings.View
             DateTime? selectedDate = date.SelectedDate;
             int CheckBoxIsActive = checkboxisactive.IsChecked == true ? 1 : 0;
 
+            // Vérifie si les champs obligatoires sont remplis
             if (!string.IsNullOrEmpty(Label) && !string.IsNullOrEmpty(Siret) && !string.IsNullOrEmpty(Desc) && selectedDate.HasValue)
             {
-
+                // Vérifie la sélection des catégories principale et de pack
                 if (DropdownBigCategories.SelectedItem is BigCategory selectedBigCategory && DropdownPack.SelectedItem is Pack selectedPack)
                 {
+                    // Met à jour les propriétés du partenaire avec les nouvelles données
                     Partner.Label = Label;
                     Partner.Siret = Siret;
                     Partner.Desc = Desc;
@@ -95,28 +103,28 @@ namespace MegaCastings.View
                     Partner.Bigcategoryid = selectedBigCategory.Id;
                     Partner.Packid = selectedPack.Id;
 
+                    // Met à jour le partenaire dans la base de données
                     using (MegaProductionContext context = new MegaProductionContext())
                     {
                         context.Partners.Update(Partner);
                         context.SaveChanges();
                     }
 
-                    MessageBox.Show("Utilisateur update avec succès.");
+                    MessageBox.Show("Partenaire mis à jour avec succès.");
 
+                    // Redirige vers la vue des partenaires
                     PartnerView PartnerView = new PartnerView();
                     NavigationService?.RemoveBackEntry(); // Efface l'historique de navigation
                     NavigationService?.Navigate(PartnerView);
-
-
                 }
                 else
                 {
-                    MessageBox.Show("Veuillez sélectionner une catégorie et une sous-catégorie.");
+                    MessageBox.Show("Veuillez sélectionner une catégorie principale et une catégorie de pack.");
                 }
             }
             else
             {
-                MessageBox.Show("Veuillez saisir le prénom et le nom de l'utilisateur.");
+                MessageBox.Show("Veuillez remplir tous les champs obligatoires.");
             }
         }
     }
